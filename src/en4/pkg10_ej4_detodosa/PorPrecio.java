@@ -41,6 +41,7 @@ private DefaultTableModel mod=new DefaultTableModel(){
         jtvalor2 = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jtlista = new javax.swing.JTable();
+        jButton1 = new javax.swing.JButton();
 
         setClosable(true);
 
@@ -51,20 +52,10 @@ private DefaultTableModel mod=new DefaultTableModel(){
 
         jtvalor1.setText("0");
         jtvalor1.setToolTipText("");
-        jtvalor1.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                jtvalor1KeyReleased(evt);
-            }
-        });
 
         jLabel3.setText("y");
 
         jtvalor2.setText("0");
-        jtvalor2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtvalor2ActionPerformed(evt);
-            }
-        });
 
         jtlista.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -78,6 +69,13 @@ private DefaultTableModel mod=new DefaultTableModel(){
             }
         ));
         jScrollPane1.setViewportView(jtlista);
+
+        jButton1.setText("Buscar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -93,14 +91,17 @@ private DefaultTableModel mod=new DefaultTableModel(){
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jtvalor2, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(101, 101, 101)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jtvalor2, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton1))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 387, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 414, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(11, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(112, 112, 112))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -111,7 +112,8 @@ private DefaultTableModel mod=new DefaultTableModel(){
                     .addComponent(jLabel2)
                     .addComponent(jtvalor1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3)
-                    .addComponent(jtvalor2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtvalor2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -120,7 +122,7 @@ private DefaultTableModel mod=new DefaultTableModel(){
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jtvalor1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtvalor1KeyReleased
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         borrarfilas();
         double v1=0;
@@ -141,43 +143,10 @@ private DefaultTableModel mod=new DefaultTableModel(){
                 });
             }
         }
-//        for(Producto p:DeTodoSA.lista){
-//            if(p.getPrecio()>Double.MIN_VALUE){
-//                mod.addRow(new Object[]{
-//                    p.getCodigo(),
-//                    p.getDescripcion(),
-//                    p.getPrecio(),
-//                    p.getStock()
-//                });
-//            }
-//        }
-    }//GEN-LAST:event_jtvalor1KeyReleased
-
-    private void jtvalor2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtvalor2ActionPerformed
-        // TODO add your handling code here:
-        borrarfilas();
-        double v1=0;
-        double v2=0;
-        try{
-        v1=Double.parseDouble(jtvalor1.getText());
-        v2=Double.parseDouble(jtvalor2.getText());
-        }catch(NumberFormatException x){
-            System.out.println("Error "+x.getMessage());
-        }
-        for(Producto p:DeTodoSA.lista){
-            if(p.getPrecio()>=v1 && p.getPrecio()<=v2){
-                mod.addRow(new Object[]{
-                    p.getCodigo(),
-                    p.getDescripcion(),
-                    p.getPrecio(),
-                    p.getStock()
-                });
-            }
-        }
-    }//GEN-LAST:event_jtvalor2ActionPerformed
-
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
