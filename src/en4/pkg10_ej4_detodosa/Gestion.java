@@ -202,12 +202,16 @@ public class Gestion extends javax.swing.JInternalFrame {
 
     private void jBguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBguardarActionPerformed
         // TODO add your handling code here:
+        try{
         int cod=Integer.parseInt(jTcod.getText());
         String des=jTdesc.getText();
         double pre=Double.parseDouble(jTprecio.getText());
         int sto=Integer.parseInt(jTstock.getText());
         DeTodoSA.lista.add(new Producto(cod,des,pre,sto,(Categoria)jcrubro.getSelectedItem()));
         JOptionPane.showMessageDialog(this, "Se ha guardado los cambios");
+        }catch(NumberFormatException x){
+            JOptionPane.showMessageDialog(this, "Error al agregar el producto");
+        }
     }//GEN-LAST:event_jBguardarActionPerformed
 
     private void jBborrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBborrarActionPerformed
